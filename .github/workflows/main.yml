@@ -7,6 +7,9 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@v7
+      - run: |
+          brew install llvm
+          echo "$(brew --prefix)/opt/llvm/bin" >> $GITHUB_PATH
       - run: clang++ --version
       - name: build
         run: |
