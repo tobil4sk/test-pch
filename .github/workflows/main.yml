@@ -1,0 +1,18 @@
+name: test
+on: [push]
+
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v7
+      - run: clang++ --version
+      - name: build
+        run: |
+          ulimit -n
+          ulimit -n 256
+          ulimit -n
+          sh without-pch.sh
+          sh with-pch.sh
+
